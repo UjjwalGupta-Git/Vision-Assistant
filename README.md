@@ -9,7 +9,7 @@ The main file is `src/main.py`
 
 ## Problems  
 
-### 1. `bash: command not found: brew` or `zsh: command not found: brew`  
+### 1. `bash: command not found: brew` or `zsh: command not found: brew` while running `install_dependencies.sh`  
 
 **install homebrew through this command:**  
 ```  
