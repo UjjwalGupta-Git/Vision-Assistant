@@ -1,6 +1,4 @@
-# pip install wikipedia
 # pip install ecapture
-# pip install beautifulsoup4
 # pip install Tkinter
 
 brew install portaudio
