@@ -6,3 +6,8 @@
 # pip install requests 
 # pip install beautifulsoup4
 # pip install Tkinter
+
+brew install portaudio
+pip install pyaudio
+pip install SpeechRecognition
+pip install pyttsx3
