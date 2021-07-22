@@ -1,22 +1,31 @@
 import speech_recognition as sr
 import pyttsx3
+import requests
+import json
 
 # Recognizer object
 r = sr.Recognizer()
 
 # Function to convert text to speech
-def Speak(command):
+def Speak(command, speed):
     engine = pyttsx3.init()
 
-    # Increasing the speed of voice (felt pretty slow on default)
-    engine.setProperty('rate', 225)
+    # changes the speed of voice
+    engine.setProperty('rate', speed)
 
     engine.say(command) 
     engine.runAndWait()
 
-# print(sr.Microphone.list_microphone_names())
+# Function to tell a joke
+def TellAJoke():
+    randomJokeUrl = "https://official-joke-api.appspot.com/random_joke"
+    jokeJSONData = requests.get(randomJokeUrl).json()
+    setup = jokeJSONData["setup"]
+    punchLine = jokeJSONData["punchline"]
+    Speak(setup, 150)
+    Speak(punchLine, 150)
 
-# Speak("Hello, my name is vision. How can I help you")
+TellAJoke()
 
 while(True):
     with sr.Microphone() as source:
@@ -32,5 +41,5 @@ while(True):
         audio = r.listen(source, timeout=5)
 
         # converts AudioData into text
-        text = r.recognize_google(audio, language='en-US') 
-        Speak("did you say " + text)
+        text = r.recognize_google(audio, language='en-US')
+
