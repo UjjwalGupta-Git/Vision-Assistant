@@ -58,11 +58,35 @@ def OpenAPP(app):
             path = "'/Applications/" + _app + "'"
             os.system("open " + path)
 
+def listToString(s):
+
+    tempStr = ""
+    
+    for word in s: 
+        tempStr += word + ' '
+    
+    # return string  
+    return tempStr 
+
 def DetectKeywords(sentence):
+    tempList = sentence.split(' ')
+    tempList.pop()
+
+    print(listToString(tempList).lower())
+    print(listToString(tempList).lower() in pPhrases.possibleAPP)
+    print(sentence.split(' ')[-1])
+
     if(sentence in pPhrases.possibleJokeSentences):
         TellAJoke()
 
-DetectKeywords("crack me up")
+    if(listToString(tempList).lower() in pPhrases.possibleMeanings):
+        WhatIsTheMeaningOf(sentence.split(' ')[-1])
+
+    if(listToString(tempList).lower() in pPhrases.possibleAPP):
+        OpenAPP(sentence.split(' ')[-1])
+
+    if(listToString(tempList).lower() in pPhrases.possibleWikipedia):
+        SearchOnWikipedia(sentence.split(' ')[-1])
 
 while(True):
     with sr.Microphone() as source:
