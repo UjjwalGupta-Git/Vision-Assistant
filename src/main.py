@@ -5,6 +5,7 @@ import speech_recognition as sr
 import wikipedia
 import requests
 import os
+import possiblePhrases as pPhrases
 
 # Recognizer object
 r = sr.Recognizer()
@@ -57,8 +58,11 @@ def OpenAPP(app):
             path = "'/Applications/" + _app + "'"
             os.system("open " + path)
 
-TellAJoke()
+def DetectKeywords(sentence):
+    if(sentence in pPhrases.possibleJokeSentences):
+        TellAJoke()
 
+DetectKeywords("crack me up")
 # while(True):
 #     with sr.Microphone() as source:
 
@@ -73,4 +77,4 @@ TellAJoke()
 #         audio = r.listen(source, timeout=5)
 
 #         # converts AudioData into text
-#         text = r.recognize_google(audio, language='en-US')
+#         transcript = r.recognize_google(audio, language='en-US')
