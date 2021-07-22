@@ -82,16 +82,26 @@ def DetectKeywords(sentence):
     print(tempList)
     print(sentence.split(' ')[-1])
 
+    # checks if the given sentence is in the "possibleJokeSentences" list in poosiblePhrases module (created by me)
     if(sentence in pPhrases.possibleJokeSentences):
         TellAJoke()
 
+    # checks if the given sentence(excluding last word) is in the "possibleMeanings" list
     if(tempString in pPhrases.possibleMeanings):
+
+        # Passes last word of the sentence
         WhatIsTheMeaningOf(sentence.split(' ')[-1])
 
+    # checks if the given sentence(excluding last word) is in the "possibleAPP"
     if(tempString in pPhrases.possibleAPP):
+
+        # Passes last word of the sentence
         OpenAPP(sentence.split(' ')[-1])
 
+    # checks if the given sentence(excluding last word) is in the "possibleWikipedia"
     if(tempString in pPhrases.possibleWikipedia):
+
+        # Passes last word of the sentence
         SearchOnWikipedia(sentence.split(' ')[-1])
 
 while(True):
