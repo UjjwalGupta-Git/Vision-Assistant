@@ -63,18 +63,21 @@ def DetectKeywords(sentence):
         TellAJoke()
 
 DetectKeywords("crack me up")
-# while(True):
-#     with sr.Microphone() as source:
 
-#         print("calibrating for ambient noise")
+while(True):
+    with sr.Microphone() as source:
 
-#         # Adjusts for ambient noise
-#         r.adjust_for_ambient_noise(source, duration=1)
+        print("calibrating for ambient noise")
 
-#         print("listening...")
+        # Adjusts for ambient noise
+        r.adjust_for_ambient_noise(source, duration=1)
 
-#         # Collects AudioData and stores it in audio variable
-#         audio = r.listen(source, timeout=5)
+        print("listening...")
 
-#         # converts AudioData into text
-#         transcript = r.recognize_google(audio, language='en-US')
+        # Collects AudioData and stores it in audio variable
+        audio = r.listen(source, timeout=5)
+
+        # converts AudioData into text
+        transcript = r.recognize_google(audio, language='en-US')
+
+        DetectKeywords(transcript)
