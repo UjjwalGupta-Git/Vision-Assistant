@@ -13,9 +13,6 @@ The main file is `src/main.py`
 
 try:  
         pip install --global-option='build_ext' --global-option='-I/usr/local/include' --global-option='-L/usr/local/lib' pyaudio
-        knnkjbkb
-        nj kb 
 or  
         pip3 install --global-option='build_ext' --global-option='-I/usr/local/include' --global-option='-L/usr/local/lib' pyaudio
-        nbkbkjhb
-        vjkugkg
+
