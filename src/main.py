@@ -1,11 +1,11 @@
 from PyDictionary import PyDictionary
+import possiblePhrases as pPhrases
+import speech_recognition as sr
 from playsound import playsound
 from gtts import gTTS
-import speech_recognition as sr
 import wikipedia
 import requests
 import os
-import possiblePhrases as pPhrases
 
 # Recognizer object
 r = sr.Recognizer()
