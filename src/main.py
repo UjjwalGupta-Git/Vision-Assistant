@@ -1,7 +1,6 @@
 from PyDictionary import PyDictionary
 from playsound import playsound
 from gtts import gTTS
-from pyttsx3 import speak
 import speech_recognition as sr
 import wikipedia
 import requests
