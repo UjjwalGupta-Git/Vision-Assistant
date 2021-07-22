@@ -20,3 +20,9 @@ pip install --global-option='build_ext' --global-option='-I/usr/local/include' -
 pip3 install --global-option='build_ext' --global-option='-I/usr/local/include' --global-option='-L/usr/local/lib' pyaudio
 ```  
 
+### `bash: command not found: brew` or `zsh: command not found: brew`
+
+**install homebrew through this command:**  
+```
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+```
