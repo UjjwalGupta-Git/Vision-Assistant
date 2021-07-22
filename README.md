@@ -11,8 +11,8 @@ The main file is `src/main.py`
 
 ### pyaudio doesn't install while running `install_dependencies.sh`
 
-try:  
+**try:**  
 `pip install --global-option='build_ext' --global-option='-I/usr/local/include' --global-option='-L/usr/local/lib' pyaudio`  
-or  
+**or**  
 `pip3 install --global-option='build_ext' --global-option='-I/usr/local/include' --global-option='-L/usr/local/lib' pyaudio`  
 
