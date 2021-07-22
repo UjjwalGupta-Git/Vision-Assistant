@@ -1,22 +1,23 @@
-import speech_recognition as sr
-import pyttsx3
-import requests
-import wikipedia
 from PyDictionary import PyDictionary
+from playsound import playsound
+from gtts import gTTS
+from pyttsx3 import speak
+import speech_recognition as sr
+import wikipedia
+import requests
 import os
 
 # Recognizer object
 r = sr.Recognizer()
 
 # Function to convert text to speech
-def Speak(command, speed):
-    engine = pyttsx3.init()
+def Speak(command):
+    tts = gTTS(text=command, lang='en', slow=False)
 
-    # changes the speed of voice
-    engine.setProperty('rate', speed)
-
-    engine.say(command) 
-    engine.runAndWait()
+    filename = "buffer.mp3"
+    tts.save(filename)
+    playsound(filename)
+    os.remove(filename)
 
 # Function to tell a joke
 def TellAJoke():
@@ -30,16 +31,16 @@ def TellAJoke():
     # Setup and punchline are the 2 values of the joke
     setup = jokeJSONData["setup"]
     punchLine = jokeJSONData["punchline"]
-    Speak(setup, 200)
-    Speak(punchLine, 200)
+    Speak(setup)
+    Speak(punchLine)
 
 # Function to get information from wikipedia
 def SearchOnWikipedia(keyword):
-    Speak(wikipedia.summary(keyword, sentences=2), 200)
+    Speak(wikipedia.summary(keyword, sentences=2))
 
 # Function to tell a meaning of a word
 def WhatIsTheMeaningOf(keyword):
-    Speak(keyword + " is a " + str(PyDictionary.meaning(keyword)), 200)
+    Speak(keyword + " is a " + str(PyDictionary.meaning(keyword)))
 
 # Opens a specified app
 def OpenAPP(app):
@@ -57,18 +58,20 @@ def OpenAPP(app):
             path = "'/Applications/" + _app + "'"
             os.system("open " + path)
 
-while(True):
-    with sr.Microphone() as source:
+TellAJoke()
 
-        print("calibrating for ambient noise")
+# while(True):
+#     with sr.Microphone() as source:
 
-        # Adjusts for ambient noise
-        r.adjust_for_ambient_noise(source, duration=1)
+#         print("calibrating for ambient noise")
 
-        print("listening...")
+#         # Adjusts for ambient noise
+#         r.adjust_for_ambient_noise(source, duration=1)
 
-        # Collects AudioData and stores it in audio variable
-        audio = r.listen(source, timeout=5)
+#         print("listening...")
 
-        # converts AudioData into text
-        text = r.recognize_google(audio, language='en-US')
+#         # Collects AudioData and stores it in audio variable
+#         audio = r.listen(source, timeout=5)
+
+#         # converts AudioData into text
+#         text = r.recognize_google(audio, language='en-US')
