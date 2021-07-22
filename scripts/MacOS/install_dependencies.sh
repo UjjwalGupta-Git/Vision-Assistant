@@ -1,6 +1,4 @@
-# pip install pyttsx3
 # pip install wikipedia
-# pip install SpeechRecognition
 # pip install ecapture
 # pip install pyjokes
 # pip install requests 
@@ -8,6 +6,6 @@
 # pip install Tkinter
 
 brew install portaudio
-pip install pyaudio
-pip install SpeechRecognition
-pip install pyttsx3
+pip3 install pyaudio
+pip3 install SpeechRecognition
+pip3 install pyttsx3

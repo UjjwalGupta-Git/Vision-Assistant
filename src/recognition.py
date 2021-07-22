@@ -6,16 +6,20 @@ r = sr.Recognizer()
 
 # Function to convert text to speech
 def Speak(command):
-    engine = pyttsx3.init(driverName='nsss')
+    engine = pyttsx3.init()
+
+    # Increasing the speed of voice (felt pretty slow on default)
+    engine.setProperty('rate', 225)
+
     engine.say(command) 
     engine.runAndWait()
 
 # print(sr.Microphone.list_microphone_names())
 
+# Speak("Hello, my name is vision. How can I help you")
 
 while(True):
     with sr.Microphone() as source:
-
 
         print("calibrating for ambient noise")
 
