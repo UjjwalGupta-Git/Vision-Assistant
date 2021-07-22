@@ -58,34 +58,40 @@ def OpenAPP(app):
             path = "'/Applications/" + _app + "'"
             os.system("open " + path)
 
+# Converts a list into string
 def listToString(s):
 
+    # Initialsing empty string
     tempStr = ""
     
+    # every word in list "s" is being added to tempStr with space after each word
     for word in s: 
         tempStr += word + ' '
     
-    # return string  
     return tempStr 
 
+# This Function will take in the user's speech and perform other functions based on it
 def DetectKeywords(sentence):
+
+    # The 3 lines below take the string and removes the last word from it
     tempList = sentence.split(' ')
     tempList.pop()
+    tempString = listToString(tempList).lower()
 
-    print(listToString(tempList).lower())
-    print(listToString(tempList).lower() in pPhrases.possibleAPP)
+    # Debugging
+    print(tempList)
     print(sentence.split(' ')[-1])
 
     if(sentence in pPhrases.possibleJokeSentences):
         TellAJoke()
 
-    if(listToString(tempList).lower() in pPhrases.possibleMeanings):
+    if(tempString in pPhrases.possibleMeanings):
         WhatIsTheMeaningOf(sentence.split(' ')[-1])
 
-    if(listToString(tempList).lower() in pPhrases.possibleAPP):
+    if(tempString in pPhrases.possibleAPP):
         OpenAPP(sentence.split(' ')[-1])
 
-    if(listToString(tempList).lower() in pPhrases.possibleWikipedia):
+    if(tempString in pPhrases.possibleWikipedia):
         SearchOnWikipedia(sentence.split(' ')[-1])
 
 while(True):
