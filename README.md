@@ -2,10 +2,8 @@
 
 This is an assistant that is currently under development. I will update `README.md` after changes start to happen.  
 
-You need homebrew to run `scripts/MacOS/install_dependencies.sh`  
-
-The main file is `src/main.py`  
-
+Run `scripts/MacOS/install_dependencies.sh` before running `src/main.py`
+ 
 ## Problems  
 
 ### 1. `bash: command not found: brew` or `zsh: command not found: brew` while running `install_dependencies.sh`  
