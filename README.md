@@ -3,6 +3,8 @@
 This is an assistant that is currently under development. I will update `README.md` after changes start to happen.  
 
 Run `scripts/MacOS/install_dependencies.sh` before running `src/main.py`
+
+**NOTE:** You will need to enter your password and press while running `scripts/MacOS/install_dependencies.sh`. Also, the scripts asks if you want to continue or abort. Press enter to continue.
  
 ## Problems  
 
