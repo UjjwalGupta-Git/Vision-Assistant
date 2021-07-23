@@ -8,14 +8,7 @@ Run `scripts/MacOS/install_dependencies.sh` before running `src/main.py`
  
 ## Problems  
 
-### 1. `bash: command not found: brew` or `zsh: command not found: brew` while running `install_dependencies.sh`  
-
-**install homebrew through this command:**  
-```  
-/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-```  
-
-### 2. pyaudio doesn't install while running `install_dependencies.sh`
+### 1. pyaudio doesn't install properly after running `DoubleClickForMac.sh`
 
 **try:**  
 ```  
@@ -25,7 +18,7 @@ pip install --global-option='build_ext' --global-option='-I/usr/local/include' -
 ```  
 pip3 install --global-option='build_ext' --global-option='-I/usr/local/include' --global-option='-L/usr/local/lib' pyaudio
 ```  
-### 3. If you are using a M1 mac and pyaudio doesn't install
+### 2. If you are using a M1 mac and pyaudio doesn't install
 
 Firstly check out this response from VikingOSX:  
 
