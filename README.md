@@ -4,7 +4,7 @@ This is an assistant that is currently under development. I will update `README.
 
 Run `scripts/MacOS/install_dependencies.sh` before running `src/main.py`
 
-**NOTE:** You will need to enter your password and press while running `scripts/MacOS/install_dependencies.sh`. Also, the scripts asks if you want to continue or abort. Press enter to continue.
+**NOTE:** You will need to Python3.9 installed. You can get it from https://www.python.org/downloads/
  
 ## Problems  
 
