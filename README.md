@@ -25,3 +25,12 @@ pip install --global-option='build_ext' --global-option='-I/usr/local/include' -
 ```  
 pip3 install --global-option='build_ext' --global-option='-I/usr/local/include' --global-option='-L/usr/local/lib' pyaudio
 ```  
+### 3. If you are using a M1 mac and pyaudio doesn't install
+
+Firstly check out this response from VikingOSX:  
+
+https://discussions.apple.com/thread/252638887  
+
+If the problem stil persists (which was the case for one of the collaborators):  
+
+try running `install_pyaudio_m1.sh`
