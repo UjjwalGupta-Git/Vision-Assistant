@@ -2,7 +2,7 @@
 
 This is an assistant that is currently under development. I will update `README.md` after changes start to happen.  
 
-You need homebrew to run `install_dependencies.sh`  
+You need homebrew to run `scripts/MacOS/install_dependencies.sh`  
 
 The main file is `src/main.py`  
 
@@ -33,4 +33,4 @@ https://discussions.apple.com/thread/252638887
 
 If the problem stil persists (which was the case for one of the collaborators):  
 
-try running `install_pyaudio_m1.sh`
+try running `scripts/MacOS/install_pyaudio_m1.sh`
