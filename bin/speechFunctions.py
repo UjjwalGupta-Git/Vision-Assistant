@@ -3,7 +3,11 @@ from playsound import playsound
 from gtts import gTTS
 import wikipedia
 import requests
+import platform
 import os
+import startup
+
+Initialised = False
 
 # Function to convert text to speech
 def Speak(command):
@@ -39,16 +43,31 @@ def WhatIsTheMeaningOf(keyword):
 
 # Opens a specified app
 def OpenAPP(app):
+    if(platform.system() == "Windows"):
 
-    # Gets a list of all apps
-    Applications = os.listdir("/Applications/")
+        # Loops through all apps in the Applications list
+        for _app in startup.WindowsApps:
 
-    # Loops through all apps in the Applications list
-    for _app in Applications:
+            # finds the app
+            if app.lower() in _app.lower() and ".exe" in _app.lower():
 
-        # finds the app
-        if app.lower() in _app.lower():
+                # Opens the app after formating it's path
+                path = "'/Applications/" + _app + "'"
+                os.system("start " + path)
+                break
 
-            # Opens the app after formating it's path
-            path = "'/Applications/" + _app + "'"
-            os.system("open " + path)
+    elif(platform.system() == "Darwin"):
+
+        # Loops through all apps in the Applications list
+        for _app in startup.WindowsApps:
+
+            # finds the app
+            if app.lower() in _app.lower() and ".app" in _app.lower():
+
+                # Opens the app after formating it's path
+                path = "'/Applications/" + _app + "'"
+                os.system("open " + path)
+                break
+
+
+OpenAPP("discord")

@@ -2,6 +2,8 @@ import possiblePhrases as pPhrases
 import speech_recognition as sr
 import speechFunctions as sF
 
+sF.Initialised = True
+
 # Recognizer object
 r = sr.Recognizer()
 
