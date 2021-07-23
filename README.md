@@ -2,7 +2,7 @@
 
 This is an assistant that is currently under development. I will update `README.md` after changes start to happen.  
 
-Run `scripts/MacOS/install_dependencies.sh` before running `src/main.py`
+Run `scripts/Universal/DoubleClickForMac.sh` or `scripts/Universal/DoubleClickForWindows.bat` before running `src/main.py`
 
 **NOTE:** You will need to Python3.9 installed. You can get it from https://www.python.org/downloads/
  
