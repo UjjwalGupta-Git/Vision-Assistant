@@ -1,6 +1,5 @@
 import os
 import json
-from glob import glob
 import platform
 
 # Loads the json file "Data.json" as read-only
