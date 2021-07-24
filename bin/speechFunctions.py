@@ -7,8 +7,6 @@ import platform
 import os
 import json
 
-Initialised = False
-
 # Function to convert text to speech
 def Speak(command):
     tts = gTTS(text=command, lang='en', slow=False)
@@ -73,6 +71,3 @@ def OpenAPP(app):
                 # Opens the app
                 os.system("open " + _app)
                 break
-
-
-OpenAPP("discord")
