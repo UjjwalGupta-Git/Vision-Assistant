@@ -42,17 +42,15 @@ def WhatIsTheMeaningOf(keyword):
 # Opens a specified app
 def OpenAPP(app):
 
-    appsList = []
-
     # Opens the Data.json file
     with open("bin/Data/Data.json", 'r') as file:
-        appsList = json.load(file)
+        appList = json.load(file)
 
 
     if(platform.system() == "Windows"):
 
         # Loops through all apps in the Applications list
-        for _app in appsList["WindowsApps"]:
+        for _app in appList["WindowsApps"]:
 
             # Finds the app
             if app.lower() in _app.lower() and ".exe" in _app.lower():
@@ -63,7 +61,7 @@ def OpenAPP(app):
     elif(platform.system() == "Darwin"):
 
         # Loops through all apps in the Applications list
-        for _app in appsList["MacApps"]:
+        for _app in appList["MacApps"]:
 
             # Finds the app
             if app.lower() in _app.lower() and ".app" in _app.lower():
