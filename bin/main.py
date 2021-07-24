@@ -30,7 +30,11 @@ def DetectKeywords(sentence):
 
     # Debugging
     print(tempList)
-    print(sentence.split(' ')[-1])
+    print(sentence.split(' '))
+    print(sentence.split(' ')[1:])
+    print(listToString(sentence.split(' ')[1:]))
+    print((listToString(sentence.split(' ')[1:]))[0:-1])
+    print(tempList[0])
 
     # checks if the given sentence is in the "possibleJokeSentences" list in poosiblePhrases module (created by me)
     if(sentence in pPhrases.possibleJokeSentences):
@@ -43,10 +47,11 @@ def DetectKeywords(sentence):
         sF.WhatIsTheMeaningOf(sentence.split(' ')[-1])
 
     # checks if the given sentence(excluding last word) is in the "possibleAPP"
-    if(tempString in pPhrases.possibleAPP):
+    if(tempList[0] + ' ' in pPhrases.possibleAPP):
 
+        print("hi")
         # Passes last word of the sentence
-        sF.OpenAPP(sentence.split(' ')[-1])
+        sF.OpenAPP((listToString(sentence.split(' ')[1:]))[0:-1])
 
     # checks if the given sentence(excluding last word) is in the "possibleWikipedia"
     if(tempString in pPhrases.possibleWikipedia):
@@ -54,20 +59,22 @@ def DetectKeywords(sentence):
         # Passes last word of the sentence
         sF.SearchOnWikipedia(sentence.split(' ')[-1])
 
-while(True):
-    with sr.Microphone() as source:
+DetectKeywords("launch system preferences")
 
-        print("calibrating for ambient noise")
+# while(True):
+#     with sr.Microphone() as source:
 
-        # Adjusts for ambient noise
-        r.adjust_for_ambient_noise(source, duration=1)
+#         print("calibrating for ambient noise")
 
-        print("listening...")
+#         # Adjusts for ambient noise
+#         r.adjust_for_ambient_noise(source, duration=1)
 
-        # Collects AudioData and stores it in audio variable
-        audio = r.listen(source, timeout=5)
+#         print("listening...")
 
-        # converts AudioData into text
-        transcript = r.recognize_google(audio, language='en-US')
+#         # Collects AudioData and stores it in audio variable
+#         audio = r.listen(source, timeout=5)
 
-        DetectKeywords(transcript)
+#         # converts AudioData into text
+#         transcript = r.recognize_google(audio, language='en-US')
+
+#         DetectKeywords(transcript)
