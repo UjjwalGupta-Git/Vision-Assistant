@@ -5,7 +5,7 @@ import wikipedia
 import requests
 import platform
 import os
-import startup
+import json
 
 Initialised = False
 
@@ -43,30 +43,35 @@ def WhatIsTheMeaningOf(keyword):
 
 # Opens a specified app
 def OpenAPP(app):
+
+    appsList = []
+
+    # Opens the Data.json file
+    with open("bin/Data/Data.json", 'r') as file:
+        appsList = json.load(file)
+
+
     if(platform.system() == "Windows"):
 
         # Loops through all apps in the Applications list
-        for _app in startup.WindowsApps:
+        for _app in appsList["WindowsApps"]:
 
-            # finds the app
+            # Finds the app
             if app.lower() in _app.lower() and ".exe" in _app.lower():
 
-                # Opens the app after formating it's path
-                path = "'/Applications/" + _app + "'"
-                os.system("start " + path)
+                # Opens the app
+                os.system("start " + _app)
                 break
-
     elif(platform.system() == "Darwin"):
 
         # Loops through all apps in the Applications list
-        for _app in startup.WindowsApps:
+        for _app in appsList["MacApps"]:
 
-            # finds the app
+            # Finds the app
             if app.lower() in _app.lower() and ".app" in _app.lower():
 
-                # Opens the app after formating it's path
-                path = "'/Applications/" + _app + "'"
-                os.system("open " + path)
+                # Opens the app
+                os.system("open " + _app)
                 break
 
 
