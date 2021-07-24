@@ -4,7 +4,6 @@
 # To track changes again, use this command
 # git update-index --no-assume-unchanged bin/Data/Data.json
 
-
 import os
 import json
 import platform
