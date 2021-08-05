@@ -2,6 +2,8 @@ import possiblePhrases as pPhrases
 import speech_recognition as sr
 import speechFunctions as sF
 import startup as st
+import GUI
+import multiprocessing
 
 st.Initialise()
 
@@ -61,20 +63,32 @@ def DetectKeywords(sentence):
 
 DetectKeywords("launch system preferences")
 
-# while(True):
-#     with sr.Microphone() as source:
+while(True):
+    with sr.Microphone() as source:
 
-#         print("calibrating for ambient noise")
+        print("calibrating for ambient noise")
 
-#         # Adjusts for ambient noise
-#         r.adjust_for_ambient_noise(source, duration=1)
+        # Adjusts for ambient noise
+        r.adjust_for_ambient_noise(source, duration=1)
 
-#         print("listening...")
+        print("listening...")
 
-#         # Collects AudioData and stores it in audio variable
-#         audio = r.listen(source, timeout=5)
+        def Recognize():
 
-#         # converts AudioData into text
-#         transcript = r.recognize_google(audio, language='en-US')
+            # Collects AudioData and stores it in audio variable
+            audio = r.listen(source, timeout=5)
 
-#         DetectKeywords(transcript)
+            # converts AudioData into text
+            transcript = r.recognize_google(audio, language='en-US')
+
+            DetectKeywords(transcript)
+
+        def Audio():
+
+            audio = r.listen(source, timeout=1)
+            GUI.ProcessAudioData(audio)
+
+        p1 =  multiprocessing.Process(target= Recognize)
+        p2 =  multiprocessing.Process(target= Audio)
+        p1.start()
+        p2.start()
