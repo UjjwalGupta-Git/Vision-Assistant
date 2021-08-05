@@ -43,7 +43,7 @@ def WhatIsTheMeaningOf(keyword):
 def OpenAPP(app):
 
     # Opens the Data.json file
-    with open("bin/Data/Data.json", 'r') as file:
+    with open("main/Data/Data.json", 'r') as file:
         appList = json.load(file)
 
 

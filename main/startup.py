@@ -1,8 +1,8 @@
 # Changes to Data.json was stopped by this command
-# git update-index --assume-unchanged bin/Data/Data.json
+# git update-index --assume-unchanged main/Data/Data.json
 
 # To track changes again, use this command
-# git update-index --no-assume-unchanged bin/Data/Data.json
+# git update-index --no-assume-unchanged main/Data/Data.json
 
 import os
 import json
@@ -11,7 +11,7 @@ import platform
 def Initialise():
 
     # Loads the json file "Data.json" as read-only
-    dataJSON = open("bin/Data/Data.json", "r")
+    dataJSON = open("main/Data/Data.json", "r")
     dataJSONObject = json.load(dataJSON)
     dataJSON.close()
 
@@ -19,12 +19,12 @@ def Initialise():
     if(platform.system() == "Darwin"):
 
         # Find all applications and save them with thier path to Data.txt
-        os.system("find /Applications -name '*.app' > bin/Data/Data.txt")
-        os.system("find /System/Applications -name '*.app' >> bin/Data/Data.txt")
+        os.system("find /Applications -name '*.app' > main/Data/Data.txt")
+        os.system("find /System/Applications -name '*.app' >> main/Data/Data.txt")
 
         # Opens the saved Data.txt file and assigns it to a variable
         tempData = ""
-        with open("bin/Data/Data.txt", 'r') as file:
+        with open("main/Data/Data.txt", 'r') as file:
             tempData = file.read()
 
         # tempData has application paths divided by a new lines, this creates a list of all apps with thier paths
@@ -36,7 +36,7 @@ def Initialise():
             i += 1
 
         # This time it opens the "Data.json" as writable
-        dataJSON = open("bin/Data/Data.json", "w")
+        dataJSON = open("main/Data/Data.json", "w")
 
         # Assigns the key of the value(MacApps) (Kind of like a dictionary)
         dataJSONObject["MacApps"] = Applications
@@ -56,7 +56,7 @@ def Initialise():
             Applications[i] = "C:\\ProgramData\\Microsoft\\Windows\\Start Menu\\Programs\\" + app
 
         # This time it opens the "Data.json" as writable
-        dataJSON = open("bin/Data/Data.json", "w")
+        dataJSON = open("main/Data/Data.json", "w")
 
         # Assigns the key of the value(WindowsApps) (Kind of like a dictionary)
         dataJSONObject["WindowsApps"] = Applications
