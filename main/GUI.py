@@ -1,37 +1,37 @@
 import struct
 import numpy as np
 import pyaudio
+import matplotlib
+matplotlib.use('TkAgg')
 import matplotlib.pyplot as plt
 
-#%matplotlib tk
+CHUNK = 1024 * 4
 
-p = pyaudio.PyAudio()
+def ProcessAudioData():
+    p = pyaudio.PyAudio()
 
-CHUNK = 1024 * 2
-FORMAT = pyaudio.paInt16
-CHANNELS = 1
-RATE = int(p.get_device_info_by_index(0)['defaultSampleRate'])
+    stream = p.open(
+        rate=44100,
+        channels=1,
+        format=pyaudio.paInt16,
+        input=True,
+        output=True,
+        frames_per_buffer=CHUNK
+    )
+
+    fig,ax = plt.subplots()
+    x = np.arange(0,2*CHUNK,2)
+    line, = ax.plot(x, np.random.rand(CHUNK),'r')
+    ax.set_ylim(-60000,60000)
+    ax.ser_xlim = (0,CHUNK)
+    fig.show()
+
+    while True:
+        data = stream.read(CHUNK)
+        dataInt = struct.unpack(str(CHUNK) + 'h', data)
+        line.set_ydata(dataInt)
+        fig.canvas.draw()
+        fig.canvas.flush_events()
 
 
-stream = p.open(
-    format=FORMAT,
-    channels=CHANNELS,
-    rate=RATE,
-    input=True,
-    output=True,
-    frames_per_buffer=CHUNK
-)
-
-data = stream.read(CHUNK, exception_on_overflow=False)
-print(data)
-
-# data_int = struct.unpack(str(2 * CHUNK) + 'B', data)
-
-# fig, ax = plt.subplots()
-# ax.plot(data_int, '-')
-
-# plt.show()
-
-# def ProcessAudioData():
-#     pass
-
+ProcessAudioData()
